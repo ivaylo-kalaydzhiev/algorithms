@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/ivaylo.kalaydzhiev/Desktop/graphs/cmake-build-debug"
+			"value" : "/Users/ivaylo.kalaydzhiev/Documents/GitHub/Data-Structures-and-Algorithms-C--/graphs/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -479,7 +479,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/ivaylo.kalaydzhiev/Desktop/graphs/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/ivaylo.kalaydzhiev/Documents/GitHub/Data-Structures-and-Algorithms-C--/graphs/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/ivaylo.kalaydzhiev/Desktop/graphs"
+			"value" : "/Users/ivaylo.kalaydzhiev/Documents/GitHub/Data-Structures-and-Algorithms-C--/graphs"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1111,7 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/ivaylo.kalaydzhiev/Desktop/graphs/cmake-build-debug"
+			"value" : "/Users/ivaylo.kalaydzhiev/Documents/GitHub/Data-Structures-and-Algorithms-C--/graphs/cmake-build-debug"
 		},
 		{
 			"name" : "graphs_IS_TOP_LEVEL",
@@ -1135,7 +1135,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/ivaylo.kalaydzhiev/Desktop/graphs"
+			"value" : "/Users/ivaylo.kalaydzhiev/Documents/GitHub/Data-Structures-and-Algorithms-C--/graphs"
 		}
 	],
 	"kind" : "cache",
