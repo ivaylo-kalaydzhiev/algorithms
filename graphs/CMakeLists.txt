@@ -3,4 +3,4 @@ project(graphs)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(graphs main.cpp ALGraph.cpp)
+add_executable(graphs main.cpp ALGraph.cpp AMGraph.cpp)

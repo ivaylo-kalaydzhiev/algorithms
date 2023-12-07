@@ -6,12 +6,11 @@
 // Adjacency matrix
 
 
-
 int main() {
     int v, e;
     std::cin >> v >> e;
 
-    Graph graph(v, false);
+    AMGraph graph(v, false);
     for(int i = 0; i < e; i++) {
         int from, to;
         std::cin >> from >> to;

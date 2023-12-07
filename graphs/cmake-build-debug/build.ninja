@@ -61,6 +61,12 @@ build CMakeFiles/graphs.dir/ALGraph.cpp.o: CXX_COMPILER__graphs_Debug /Users/iva
   OBJECT_DIR = CMakeFiles/graphs.dir
   OBJECT_FILE_DIR = CMakeFiles/graphs.dir
 
+build CMakeFiles/graphs.dir/AMGraph.cpp.o: CXX_COMPILER__graphs_Debug /Users/ivaylo.kalaydzhiev/Documents/GitHub/Data-Structures-and-Algorithms-C--/graphs/AMGraph.cpp || cmake_object_order_depends_target_graphs
+  DEP_FILE = CMakeFiles/graphs.dir/AMGraph.cpp.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics -std=gnu++17
+  OBJECT_DIR = CMakeFiles/graphs.dir
+  OBJECT_FILE_DIR = CMakeFiles/graphs.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target graphs
@@ -69,7 +75,7 @@ build CMakeFiles/graphs.dir/ALGraph.cpp.o: CXX_COMPILER__graphs_Debug /Users/iva
 #############################################
 # Link the executable graphs
 
-build graphs: CXX_EXECUTABLE_LINKER__graphs_Debug CMakeFiles/graphs.dir/main.cpp.o CMakeFiles/graphs.dir/ALGraph.cpp.o
+build graphs: CXX_EXECUTABLE_LINKER__graphs_Debug CMakeFiles/graphs.dir/main.cpp.o CMakeFiles/graphs.dir/ALGraph.cpp.o CMakeFiles/graphs.dir/AMGraph.cpp.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk
   OBJECT_DIR = CMakeFiles/graphs.dir
   POST_BUILD = :
