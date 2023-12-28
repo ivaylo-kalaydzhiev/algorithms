@@ -1,0 +1,3 @@
+/Users/ivaylo.kalaydzhiev/Documents/GitHub/Data-Structures-and-Algorithms-C--/trees/cmake-build-debug/CMakeFiles/trees.dir
+/Users/ivaylo.kalaydzhiev/Documents/GitHub/Data-Structures-and-Algorithms-C--/trees/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ivaylo.kalaydzhiev/Documents/GitHub/Data-Structures-and-Algorithms-C--/trees/cmake-build-debug/CMakeFiles/rebuild_cache.dir
