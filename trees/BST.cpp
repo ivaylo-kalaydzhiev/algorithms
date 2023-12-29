@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <queue>
 
 class Node {
 public:
@@ -135,5 +136,25 @@ public:
         measureHeight(node, 0, maxHeight);
 
         return maxHeight;
+    }
+
+    void printLevels() {
+        std::queue<Node*> q;
+
+        q.push(root);
+
+        while(!q.empty()) {
+            Node *curr = q.front();
+            std::cout << curr->key << ' ';
+            q.pop();
+
+            if(curr->l != nullptr) {
+                q.push(curr->l);
+            }
+
+            if(curr->r != nullptr) {
+                q.push(curr->r);
+            }
+        }
     }
 };
