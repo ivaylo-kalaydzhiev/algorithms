@@ -100,6 +100,16 @@ private:
         }
     }
 
+    void measureHeight(Node *node, int currHeight, int &max) {
+        if (node == nullptr) {
+            return;
+        }
+
+        max = std::max(currHeight, max);
+
+        measureHeight(node->l, currHeight + 1, max);
+        measureHeight(node->r, currHeight + 1, max);
+    }
 
 public:
     BST() : root(nullptr) {}
@@ -120,4 +130,10 @@ public:
         return search(key, root);
     }
 
+    int height(Node *node) {
+        int maxHeight = 0;
+        measureHeight(node, 0, maxHeight);
+
+        return maxHeight;
+    }
 };
