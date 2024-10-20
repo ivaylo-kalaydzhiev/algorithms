@@ -1,0 +1,3 @@
+﻿  SortingAlgorithms.cpp
+C:\Users\ivayl\Development\Algorithms\SortingAlgorithms\SortingAlgorithms\SortingAlgorithms.cpp(23,9): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  SortingAlgorithms.vcxproj -> C:\Users\ivayl\Development\Algorithms\SortingAlgorithms\x64\Debug\SortingAlgorithms.exe
