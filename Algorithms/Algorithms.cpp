@@ -1,4 +1,25 @@
 #include <iostream>
+#include <vector>
+
+// Utilities
+
+void printArr(int* arr, int size) {
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << arr[i] << ", ";
+    }
+    std::cout << std::endl;
+}
+
+void printArr(std::vector<int> &arr) {
+    for (int i = 0; i < arr.size(); i++)
+    {
+        std::cout << arr[i] << ", ";
+    }
+    std::cout << std::endl;
+}
+
+// Technique-ilustrative excercises
 
 int pairs(int* arr, int size, int target) {
     int count = 0;
@@ -34,6 +55,12 @@ int countPairsOfSocks(int* arr, int size) {
 
     return count;
 }
+
+// Slow sorting algorithms all go O(N^2)
+// -> That is because on each iteration they put exactly one more element
+// it it's correct, sorted place.
+// -> The only way they differ is in the way they choose to accomplish
+// the task of moving one element to the correct position.
 
 void bubbleSort(int* arr, int size) {
     for (int i = 0; i < size; i++) {
@@ -71,17 +98,66 @@ void insertionSort(int* arr, int size) {
     }
 }
 
-void printArr(int* arr, int size) {
-    for (int i = 0; i < size; i++)
-    {
-        std::cout << arr[i] << ", ";
+// Fast sorting algorithms
+
+void merge(int* arr, int begin, int mid, int end) {
+    // 0 4 9
+
+    // Create a copy of the left part
+    int leftSize = mid - begin + 1;
+    int* leftArr = new int[leftSize];
+    for (int i = 0; i < leftSize; i++) {
+        leftArr[i] = arr[begin + i];
     }
-    std::cout << std::endl;
+
+    // Craete a copy of the right part
+    int rightSize = end - mid;
+    int* rightArr = new int[rightSize];
+    for (int i = 0; i < rightSize; i++) {
+        rightArr[i] = arr[mid + 1 + i];
+    }
+
+    // Insert as many items as you can from left or right
+    int li = 0; int ri = 0; int ai = begin;
+    while (li < leftSize && ri < rightSize) {
+        if (leftArr[li] <= rightArr[ri]) {
+            arr[ai] = leftArr[li];
+            ai++; li++;
+        }
+        else {
+            arr[ai] = rightArr[ri];
+            ai++; ri++;
+        }
+    }
+
+    // Insert rest of left if any
+    while (li < leftSize) {
+        arr[ai] = leftArr[li];
+        ai++; li++;
+    }
+
+    // Insert rest of right if any
+    while (ri < rightSize) {
+        arr[ai] = rightArr[ri];
+        ai++; ri++;
+    }
+
+    delete[] leftArr;
+    delete[] rightArr;
+}
+
+void mergeSort(int* arr, int begin, int end) {
+    if (end > begin) {
+        int mid = begin + (end - begin) / 2;
+        mergeSort(arr, begin, mid);
+        mergeSort(arr, mid + 1, end);
+        merge(arr, begin, mid, end);
+    }
 }
 
 int main()
 {
     int arr[] = {2, 2, 3, 1, 4, 2, 4, 2, 4, 4, 5, 2, 1, 9, 3, 6, 0, 0};
-    insertionSort(arr, 18);
+    mergeSort(arr, 0, 17);
     printArr(arr, 18);
 }
