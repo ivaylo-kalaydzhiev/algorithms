@@ -101,8 +101,6 @@ void insertionSort(int* arr, int size) {
 // Fast sorting algorithms
 
 void merge(int* arr, int begin, int mid, int end) {
-    // 0 4 9
-
     // Create a copy of the left part
     int leftSize = mid - begin + 1;
     int* leftArr = new int[leftSize];
@@ -155,9 +153,41 @@ void mergeSort(int* arr, int begin, int end) {
     }
 }
 
-int main()
-{
+int partition(int* arr, int begin, int end) {
+    // Pick a pivot element (I'll choose the last one as is customary)
+    int pivotValue = arr[end];
+
+    // Init pointer which is going to represent the end of the smaller-than-pivot numbers
+    int smallerValuesEnd = begin - 1;
+
+    // Go trough the arr with another pointer
+    for (int i = begin; i < end; i++)
+    {
+        // Whenever you find an element that is smaller than the pivot
+        // - increment the pointer to the smaller part and swap the numbers
+        // This way we move all numbers that are supposed to be on the smaller side to it
+        if (arr[i] < pivotValue) {
+            smallerValuesEnd++;
+            std::swap(arr[i], arr[smallerValuesEnd]);
+        }
+    }
+
+    // After we are done, we just swap the pivot and the end of the 'smaller' part
+    std::swap(arr[smallerValuesEnd + 1], arr[end]);
+    return smallerValuesEnd + 1;
+}
+
+void quickSort(int* arr, int begin, int end) {
+    if (end > begin) {
+        int pivotIndex = partition(arr, begin, end);
+
+        quickSort(arr, begin, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, end);
+    }
+}
+
+int main() {
     int arr[] = {2, 2, 3, 1, 4, 2, 4, 2, 4, 4, 5, 2, 1, 9, 3, 6, 0, 0};
-    mergeSort(arr, 0, 17);
+    insertionSort(arr, 18);
     printArr(arr, 18);
 }
