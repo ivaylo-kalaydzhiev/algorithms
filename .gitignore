@@ -30,3 +30,40 @@
 *.exe
 *.out
 *.app
+
+# IntelliJ IDEA / JetBrains IDEs
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.tlog
+*.ilk
+./SortingAlgorithms/x64/Debug
+
+# Eclipse
+.project
+.metadata/
+.classpath
+.cproject
+.settings/
+
+# NetBeans
+.nb-gradle/
+.nb/
+
+# Xcode
+xcuserdata/
+*.xcworkspace/
+*.xcuserstate
+
+# Other common IDE files
+*.swp
+*~
