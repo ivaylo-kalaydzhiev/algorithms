@@ -11,6 +11,14 @@ void printArr(int* arr, int size) {
     std::cout << std::endl;
 }
 
+void printArr(unsigned char* arr, int size) {
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << arr[i] << ", ";
+    }
+    std::cout << std::endl;
+}
+
 void printArr(std::vector<int> &arr) {
     for (int i = 0; i < arr.size(); i++)
     {
@@ -186,8 +194,44 @@ void quickSort(int* arr, int begin, int end) {
     }
 }
 
+// Specical case sorting algorithms
+// Counting Sort
+
+void countingSort(unsigned char* arr, int size) {
+    // Count occurances of each element
+    int count[256] = { 0 };
+    for (int i = 0; i < size; i++) {
+        unsigned char el = arr[i];
+        count[el]++;
+    }
+
+    // Remake the count array, so it actually tells you
+    // the last index (+1) at which the element is going to 
+    // be seen in the sorted array
+    for (int i = 1; i < 256; i++) {
+        count[i] += count[i - 1];
+    }
+
+    // Create the Sorted array
+    unsigned char* outputArr = new unsigned char[size];
+    for (int i = size - 1; i >= 0; i--) {
+        unsigned char el = arr[i];
+        int putIndex = count[el] - 1;
+        outputArr[putIndex] = el;
+        count[el]--;
+    }
+
+    // Copy output into arr, since, we could not have done this in-place
+    for (int i = 0; i < size; i++) {
+        arr[i] = outputArr[i];
+    }
+
+    delete[] outputArr;
+}
+
 int main() {
-    int arr[] = {2, 2, 3, 1, 4, 2, 4, 2, 4, 4, 5, 2, 1, 9, 3, 6, 0, 0};
-    insertionSort(arr, 18);
-    printArr(arr, 18);
+    //int arr[] = {2, 2, 3, 1, 4, 2, 4, 2, 4, 4, 5, 2, 1, 9, 3, 6, 0, 0};
+    unsigned char arr[] = { 'b', 'd', 'a', 'c', 'L', 'E', 'e', 'a', 'K', 'b', 'd', 'c', 'A', 'F', 'M'};
+    countingSort(arr, 15);
+    printArr(arr, 15);
 }
