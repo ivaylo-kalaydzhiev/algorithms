@@ -1,59 +1,190 @@
 #include <iostream>
 
-// Slow sorting algorithms
-// 
-// O(N^2)
-// Bubble, Selection, Insertion
-// They all have the same idea
-// -> Iterate over the collection
-// -> On each iteration move exactly one more number in it's correct place
-// They ony differ in the method they choose to move a number into it's correct place
+using namespace std;
 
-void bubbleSort(int *arr, int size) {
-	for (size_t i = 0; i < size - 1; i++)
-	{
-		int p1 = 0;
-		for (size_t p2 = 1; p2 < size - i; p2++)
-		{
-			if (arr[p1] > arr[p2])
-			{
-				std::swap(arr[p1], arr[p2]);
+
+
+class LinkedList {
+public:
+	class Node {
+	public:
+		int data;
+		Node* next;
+
+		Node(int data, Node *next = nullptr) : data(data), next(next) {}
+	};
+
+	LinkedList() {}
+
+	int front() {
+		return head ? head->data : -100;
+	}
+
+	int back() {
+		return tail ? tail->data : -100;
+	}
+
+	int size() {
+		return _size;
+	}
+
+	bool empty() {
+		return _size == 0;
+	}
+
+	void push_front(int data) {
+		_size++;
+		auto newNode = new Node(data);
+
+		if (head) {	
+			newNode->next = head;
+			head = newNode;
+		}
+		else {
+			head = newNode;
+			tail = newNode;
+		}	
+	}
+
+	void push_back(int data) {
+		_size++;
+
+		if (tail) {
+			auto newNode = new Node(data);
+			tail->next = newNode;
+			tail = newNode;
+		}
+		else {
+			push_front(data);
+		}	
+	}
+
+	void insert(int data, int pos) {
+		if (this->empty() || pos >= _size) return;
+
+		if (pos == 0) {
+			push_front(data);
+			return;
+		}
+		else if (pos == _size - 1) {
+			push_back(data);
+			return;
+		}
+
+		_size++;
+		Node* prev = nullptr;
+		Node* curr = head;
+
+		while (pos != 0 && curr) {
+			prev = curr;
+			curr = curr->next;
+			pos--;
+		}
+		
+		auto newNode = new Node(data);
+		prev->next = newNode;
+		newNode->next = curr;
+	}
+
+	void pop_front() {
+		if (this->empty()) return;
+
+		_size--;
+		auto oldHead = head;
+		if (this->size() == 1) {
+			head = nullptr;
+			tail = nullptr;
+		}
+		else {
+			head = head->next;
+		}
+		delete oldHead;
+	}
+
+	void pop_back() {
+		if (this->empty()) return;
+
+		_size--;
+		auto oldTail = tail;
+		if (this->size() == 1) {
+			head = nullptr;
+			tail = nullptr;
+		}
+		else {
+			auto curr = head;
+			while (curr->next != oldTail) {
+				curr = curr->next;
 			}
+			
+			tail = curr;
+			tail->next = nullptr;
+		}
+		delete oldTail;
+	}
 
-			p1 = p2;
+	
+	// reg case
+	
+	void remove(int pos) {
+		if (this->empty() || pos >= _size) return;
+
+		if (pos == 0) {
+			pop_front();
+			return;
+		}
+		else if (pos == _size - 1) {
+			pop_back();
+			return;
+		}
+
+		_size--;
+		Node* prev = nullptr;
+		Node* curr = head;
+
+		while (pos != 0 && curr) {
+			prev = curr;
+			curr = curr->next;
+			pos--;
+		}
+
+		prev->next = curr->next;
+		delete curr;
+	}
+
+	void print() {
+		if (this->empty()) return;
+		
+		cout << "Head: " << head->data
+			 << ", Tail: " << tail->data
+			 << ", Size: " << _size << endl;
+		
+		auto curr = head;
+		while (curr) {
+			cout << curr->data << " ";
+			curr = curr->next;
 		}
 	}
-}
 
-void selectionSort(int* arr, int size) {
+private:
+	Node* head = nullptr;
+	Node* tail = nullptr;
+	int _size = 0;
+};
 
-}
+#include <vector>
+#include <list>
+#include <algorithm>
+#include <string>
 
-void insertionSort(int* arr, int size) {
-
-}
-
-void printArr(int* arr, int size) {
-	for (size_t i = 0; i < size; i++)
-	{
-		std::cout << arr[i] << " ";
-	}
-	std::cout << std::endl;
-}
+//bool cmp(const int& a, const int& b) {
+//	return a > b;
+//}
 
 int main()
 {
-	int arr1[] = { 1, 0, -12, 4, 2134, 3, 12, 2, 3, -123 };
-	int arr2[] = { 1, 0, -12, 4, 2134, 3, 12, 2, 3, -123 };
-	int arr3[] = { 1, 0, -12, 4, 2134, 3, 12, 2, 3, -123 };
-	
-	printArr(arr1, 10);
+	string s1 = "Hello";
+	string s2 = ", World!";
+	string res = s1 + s2;
 
-	bubbleSort(arr1, 10);
-	selectionSort(arr1, 10);
-	insertionSort(arr1, 10);
-
-	printArr(arr1, 10);
-	printArr(arr2, 10);
-	printArr(arr3, 10);
+	cout << res;
 }
